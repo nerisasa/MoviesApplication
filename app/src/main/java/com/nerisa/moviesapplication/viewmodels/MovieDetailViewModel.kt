@@ -30,8 +30,7 @@ class MovieDetailViewModel(application: Application): AndroidViewModel(applicati
     fun getMovieTrailer(movieID: String){
         val movieDetailRepository = MovieDetailRepository()
 
-        movieDetailRepository.requestGET(context, "\n" +
-                "http://api.themoviedb.org/3/movie/157336/videos?api_key=" + Constant.token, object: MovieDetailRepository.ResponseHandler {
+        movieDetailRepository.requestGET(context, "https://api.themoviedb.org/3/movie/" + movieID + "/videos?api_key=" + Constant.token, object: MovieDetailRepository.ResponseHandler {
             override fun onSuccess(message: String) {
                 mutableLiveDataMovieTrailer.postValue(message)
             }
@@ -50,6 +49,7 @@ class MovieDetailViewModel(application: Application): AndroidViewModel(applicati
 
     fun getUserReviews(movieID:String, page: String){
         val movieDetailRepository = MovieDetailRepository()
+        listUserReview = mutableListOf()
 
         movieDetailRepository.requestGET(context, "\n" +
                 "https://api.themoviedb.org/3/movie/"+ movieID +"/reviews?api_key=" + Constant.token + "&language=en-US&page=" + page, object: MovieDetailRepository.ResponseHandler {

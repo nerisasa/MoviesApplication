@@ -24,8 +24,8 @@ class MoviesByGenreViewModel(application: Application): AndroidViewModel(applica
     }
 
     fun getMoviesByGenre(genreID: String, page: String){
-        val moviesByGenreActivity = MoviesByGenreActivity()
         val moviesByGenreRepository = MoviesByGenreRepository()
+        listMoviesByGenre = mutableListOf()
 
         moviesByGenreRepository.requestGET(context, "\n" +
                 "https://api.themoviedb.org/3/discover/movie?api_key=" + Constant.token + "&language=en-US&with_genres=" + genreID + "&page=" + page, object: MoviesByGenreRepository.ResponseHandler {

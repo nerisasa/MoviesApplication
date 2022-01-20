@@ -65,8 +65,8 @@ class MovieDetailRepository {
                             for (i in 0 until jsonArray.length()){
                                 val jsonObject = jsonArray.getJSONObject(i)
 
-                                if(jsonObject.getBoolean("official")){
-                                    trailerLink = "https://www.youtube.com/watch?v=" + jsonObject.getString("key")
+                                if(jsonObject.getString("site") == "YouTube" && jsonObject.getBoolean("official")){
+                                    trailerLink = jsonObject.getString("key")
                                     break
                                 }
                             }

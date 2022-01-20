@@ -10,7 +10,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:progressBackgroundTint="@color/orange" />
+        android:progressBackgroundTint="@color/orange"
+        android:theme="@style/ProgressBarStyle"/>
     
     <TextView
         android:layout_centerHorizontal="true"

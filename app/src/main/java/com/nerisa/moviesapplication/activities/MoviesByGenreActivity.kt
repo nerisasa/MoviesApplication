@@ -89,10 +89,13 @@ class MoviesByGenreActivity : AppCompatActivity() {
                     moviesByGenreAdapter = MoviesByGenreAdapter(this@MoviesByGenreActivity, listAllMoviesByGenre)
                     recycleViewMoviesByGenre.adapter = moviesByGenreAdapter
                 }else{
-                    listAllMoviesByGenre.addAll(it)
-                    moviesByGenreAdapter.notifyDataSetChanged()
+                    if(it.isEmpty()){
+                        totalPage --
+                    }else{
+                        listAllMoviesByGenre.addAll(it)
+                        moviesByGenreAdapter.notifyDataSetChanged()
+                    }
                 }
-
             }
             loadingDialog.dismissDialog()
         })
